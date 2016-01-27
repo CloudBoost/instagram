@@ -1,6 +1,10 @@
 <ion-view view-title="Photostream">
   <ion-content has-subheader="false">
     <div class="list card" ng-repeat="photo in photos | reverse">
+      <div class="item item-avatar">
+        <img ng-src="{{photo.img_url}}">
+        <h2>Pretty Hate Machine</h2>
+      </div>
       <div class="item item-image">
         <img ng-src="{{photo.img_url}}" alt="">
       </div>
