@@ -1,0 +1,30 @@
+<ion-view view-title="Photostream">
+  <ion-content has-subheader="false">
+    <div class="list card" ng-repeat="photo in photos | reverse">
+      <div class="item item-image">
+        <img ng-src="{{photo.img_url}}" alt="">
+      </div>
+      <div class="item tabs tabs-secondary tabs-icon-left">
+        <div class="tab-item" style="text-align:left;">
+          <a class="tab-button" href="#">
+            <i class="icon ion-ios-heart-outline"></i>
+          </a>
+          <a class="tab-button" href="#">
+            <i class="icon ion-ios-chatbubble-outline"></i>
+          </a>
+
+          <a class="tab-button" href="#">
+            <i class="icon ion-ios-redo-outline"></i>
+          </a>
+        </div>
+        <div class="tab-item" style="text-align:right;">
+        </div>
+        <div class="tab-item" style="text-align:right;">
+          <a class="" href="#">
+            <i class="icon ion-android-more-vertical"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

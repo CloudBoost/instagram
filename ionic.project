@@ -1,0 +1,12 @@
+{
+  "name": "instagram",
+  "app_id": "ed53a3ee",
+  "gulpStartupTasks": [
+    "sass",
+    "watch"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*"
+  ]
+}

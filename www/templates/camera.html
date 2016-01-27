@@ -1,0 +1,19 @@
+<ion-view view-title="Upload">
+  <ion-content has-subheader="false" style="text-align:center">
+    <div class="list">
+      <label class="item item-input">
+        <span class="input-label">Upload</span>
+        <input type="file" ngf-select ng-model="image.file" name="file" accept="image/*" ngf-max-size="2MB">
+      </label>
+    </div>
+    <div class="list" style="max-height:50%; overflow:scroll;">
+        <img ngf-src="!image.file.$error && image.file">
+    </div>
+    <div class="list">
+      <label class="item item-input">
+        <input type="text" placeholder="Say Something.." ng-model="image.caption">
+      </label>
+      <button class="button button-calm button-block" ng-click="upload">Post</button>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,24 @@
+<ion-nav-bar class="bar-positive">
+    <ion-nav-back-button>
+    </ion-nav-back-button>
+</ion-nav-bar>
+
+<ion-tabs class="tabs-dark tabs-icon-only" ng-controller="cameraCtrl">
+  <ion-tab title="Settings1" href="#/tabs/photostream" icon-on="ion-home" icon-off="ion-home">
+    <ion-nav-view name="photostream-tab"></ion-nav-view>
+  </ion-tab>
+  <ion-tab title="Home" icon-on="ion-search" icon-off="ion-search" href="#/tabs/setAlarm">
+    <ion-nav-view name="setAlarm-tab"></ion-nav-view>
+  </ion-tab>
+
+  <ion-tab title="Camera" icon-on="ion-camera" icon-off="ion-camera" href="#/tabs/camera">
+    <ion-nav-view name="camera-tab"></ion-nav-view>
+  </ion-tab>
+
+  <ion-tab title="Favorites" icon-on="ion-ios-heart" icon-off="ion-ios-heart" href="#/tabs/favorites">
+    <ion-nav-view name="favorites-tab"></ion-nav-view>
+  </ion-tab>
+  <ion-tab title="Settings" icon-on="ion-person" icon-off="ion-person" href="#/tabs/settings">
+    <ion-nav-view name="settings-tab"></ion-nav-view>
+  </ion-tab>
+</ion-tabs>
