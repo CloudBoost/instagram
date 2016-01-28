@@ -174,7 +174,7 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngFileUpload'])
     addNew: function(data, userId){
       var defer = $q.defer();
       var object = new CB.CloudObject("stream");
-      var user = new CB.CloudUser('User', user);
+      var user = new CB.CloudObject('User', userId);
       object.set('caption', data.caption);
       object.set('image', data.file);
       object.set('user', user);
@@ -184,6 +184,20 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngFileUpload'])
         },
         error: function(err){
           defer.reject(err);
+        }
+      });
+      return defer.promise;
+    },
+    feed: function(){
+      var defer = $q.defer();
+      var query = new CB.CloudQuery('stream');
+      query.include('user');
+      query.include('image');
+      query.find({
+        success: function(object){
+          defer.resolve(object);
+        },error: function(error){
+          defer.reject(error);
         }
       });
       return defer.promise;
@@ -220,16 +234,28 @@ angular.module('starter', ['ionic', 'ngCordova', 'ngFileUpload'])
   });
  };
 })
-.controller('photostreamCtrl', function($rootScope, $ionicLoading, $scope, $state, $stateParams){
+.controller('photostreamCtrl', function($rootScope, $ionicLoading, $scope, $state, $stateParams, Stream){
+  $scope.photos = [];
+  Stream.feed().then(function(feed){
+    $scope.photos = CB.toJSON(feed);
+  }).catch(function(){
+
+  });
 
 })
-.controller('cameraCtrl', function( $scope, $state, UploadService){
-  $scope.updateProfile = function() {
+.controller('cameraCtrl', function( $scope, $rootScope, $state, UploadService, Stream){
+  $scope.image = {};
+  $scope.upload = function() {
     $scope.updating = true;
     $scope.saving=true;
     if($scope.image.file){
-      UploadService.imageUpload($scope.picFile).then(function(obj){
+      UploadService.imageUpload($scope.image.file).then(function(obj){
+        $scope.image.file = obj;
+        Stream.addNew($scope.image, $rootScope.user._id).then(function(item){
 
+        }).catch(function(){
+
+        });
       }).catch(function(err){
         console.log("error"+ err);
       });

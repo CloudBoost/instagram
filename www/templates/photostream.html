@@ -2,11 +2,11 @@
   <ion-content has-subheader="false">
     <div class="list card" ng-repeat="photo in photos | reverse">
       <div class="item item-avatar">
-        <img ng-src="{{photo.img_url}}">
-        <h2>Pretty Hate Machine</h2>
+        <img ng-src="{{photo.user.picture}}">
+        <h2>{{photo.user.name}}</h2>
       </div>
       <div class="item item-image">
-        <img ng-src="{{photo.img_url}}" alt="">
+        <img ng-src="{{photo.image.url}}" alt="">
       </div>
       <div class="item tabs tabs-secondary tabs-icon-left">
         <div class="tab-item" style="text-align:left;">
@@ -16,7 +16,6 @@
           <a class="tab-button" href="#">
             <i class="icon ion-ios-chatbubble-outline"></i>
           </a>
-
           <a class="tab-button" href="#">
             <i class="icon ion-ios-redo-outline"></i>
           </a>
