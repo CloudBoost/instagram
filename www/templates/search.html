@@ -1,0 +1,44 @@
+<ion-view title="Search">
+  <ion-content padding="true" scroll="false">
+    <div class="card">
+      <form name="postForm" ng-submit="search(term)">
+        <label class="item-input-wrapper">
+           <i class="icon ion-ios-search placeholder-icon"></i>
+           <input type="search" ng-model="term" placeholder="Search" style="width:100%; background:#eee;">
+        </label>
+      </form>
+    </div>
+    <div class="list card" ng-repeat="photo in photos | reverse">
+      <div class="item item-avatar">
+        <img ng-src="{{photo.user.picture}}">
+        <h2>{{photo.user.name}}</h2>
+      </div>
+      <div class="item item-image">
+        <img ng-src="{{photo.image.url}}" alt="">
+      </div>
+      <div class="item tabs tabs-secondary tabs-icon-left">
+        <div class="tab-item" style="text-align:left;">
+          <a class="tab-button" href="#">
+            <i class="icon ion-ios-heart-outline"></i>
+          </a>
+          <a class="tab-button" href="#">
+            <i class="icon ion-ios-chatbubble-outline"></i>
+          </a>
+          <a class="tab-button" href="#">
+            <i class="icon ion-ios-redo-outline"></i>
+          </a>
+        </div>
+        <div class="tab-item" style="text-align:right;">
+        </div>
+        <div class="tab-item" style="text-align:right;">
+          <a class="" href="#">
+            <i class="icon ion-android-more-vertical"></i>
+          </a>
+        </div>
+      </div>
+      <div class="item">
+        {{photo.caption}}
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,6 +1,6 @@
-<ion-view view-title="Photostream">
+<ion-view view-title="Home">
   <ion-content has-subheader="false">
-    <div class="list card" ng-repeat="photo in photos | reverse">
+    <div class="list card" ng-repeat="photo in photos">
       <div class="item item-avatar">
         <img ng-src="{{photo.user.picture}}">
         <h2>{{photo.user.name}}</h2>
@@ -27,6 +27,9 @@
             <i class="icon ion-android-more-vertical"></i>
           </a>
         </div>
+      </div>
+      <div class="item">
+        {{photo.caption}}
       </div>
     </div>
   </ion-content>
