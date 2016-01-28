@@ -107,6 +107,20 @@ angular.module('starter.services', [])
         }
       });
       return defer.promise;
+    },
+    getAPost: function(id){
+      var defer = $q.defer();
+      var query = new CB.CloudQuery('stream');
+      query.include('user');
+      query.include('image');
+      query.findById(id, {
+        success: function(object){
+          defer.resolve(object);
+        },error: function(error){
+          defer.reject(error);
+        }
+      });
+      return defer.promise;
     }
   };
 });

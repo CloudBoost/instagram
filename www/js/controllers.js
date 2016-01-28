@@ -37,6 +37,15 @@ angular.module('starter.controllers', [])
 
   });
 
+  //real time
+  CB.CloudObject.on('stream', 'created', function(obj){
+    Stream.getAPost(obj.document._id).then(function(post){
+      $scope.photos.unshift(CB.toJSON(post));
+    }).catch(function(err){
+      console.log(err);
+    });
+  });
+
 })
 .controller('cameraCtrl', function( $scope, $rootScope, $state, UploadService, Stream){
   $scope.image = {};
